@@ -39,9 +39,9 @@ The values acceptable for the triggers are as follows:
           previous build but with a different optimization trigger.
  - configuration-trigger:
    - profiler:
-         - will build the kernel with profiling support (check tips on [profiling](Profiling.md) for an example use-case).
+        - will build the kernel with profiling support (check tips on [profiling](Profiling.md) for an example use-case).
    - baseline:
-         - will build the kernel with retpolines, lvi and return retpolines disabled.
+        - will build the kernel with retpolines, lvi and return retpolines disabled.
 
    - +feature1..+featureN:
          > will build the kernel with the supplied features enabled. Possible values for featureX
