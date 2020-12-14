@@ -1,5 +1,6 @@
 This file provides information on how to regenerate kernel binaries
-discussed in Experiments.md or create new custom made kernel builds.
+discussed in the [experiments](Experiments.md) tutorial or create new 
+custom made kernel builds.
 
 ## Prerequisites
 
@@ -38,7 +39,7 @@ The values acceptable for the triggers are as follows:
           previous build but with a different optimization trigger.
  - configuration-trigger:
    - profiler:
-         - will build the kernel with profiling support (check Profiling.md for an example use-case).
+         - will build the kernel with profiling support (check tips on [profiling](Profiling.md) for an example use-case).
    - baseline:
          - will build the kernel with retpolines, lvi and return retpolines disabled.
 
@@ -60,7 +61,7 @@ The values acceptable for the triggers are as follows:
            budget of 97.1234% for example supply as budget the number 971234). 
 ## Regenerating kernel configurations
 
-In order to regenerate one of the kernel images discussed in Experiments.md one must 
+In order to regenerate one of the kernel images discussed in [Experiments](Experiments.md) you must 
 check the configuration for that specific kernel image and its configuration name.
 
 To regenerate **+lvi.pibe-opt.lmbench-work.999999** image (i.e., only LVI-CFI enabled, optimized
@@ -95,7 +96,7 @@ $ cd playground/images && ./make_backup.sh baseline.noopt && cd ../..
 
 ## Some examples of creating new configurations
 
-The user is not limited to the configurations discussed in Experiments.md and can create his
+The user is not limited to the configurations supplied with the [artifact](Experiments.md) and can create his
 own custom configurations and save them in a folder of his choosing within  
 "$PATH_TO_ARTIFACT/playground/images".
 
@@ -116,8 +117,8 @@ $ ./benchmark_performance.sh folderabcd
 This command will save the LMBench results obtained when benchmarking the new configuration in 
 "$PATH_TO_ARTIFACT/playground/performance/folderabcd". In order to compare the results obtained
 on this configuration with other results (either obtained with **run_artifact.sh** or from
-other custom builds) you can use the general format of **visualise_results.sh** script (Check
-Results.md under "Customizing the comparison").
+other custom builds) you can use the general format of **visualise_results.sh** script (check
+[here](Results.md) under "Customizing the comparison").
 
 If the user wants to create a new configuration and then include it in the **run_artifact.sh**
 workflow, after calling **compile_install_kernel.sh** he must save the configuration in 
@@ -137,7 +138,7 @@ CONFIGS=(baseline.noopt .. dummyname )
 #### Using workloads.
 
 One can make use of our predefined workloads for Apache2 and LMBench3 or recreate his own
-profiling workloads as discussed in Profiling.md. The workload names for the predefined
+profiling workloads as discussed [here](Profiling.md). The workload names for the predefined
 workloads are apache2 and lmbench3 respectively.
 
 For example, if we want to create an image with lvi and return retpolines enabled and optimized with
