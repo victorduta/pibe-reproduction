@@ -44,20 +44,20 @@ The values acceptable for the triggers are as follows:
         - will build the kernel with retpolines, lvi and return retpolines disabled.
 
    - +feature1..+featureN:
-         > will build the kernel with the supplied features enabled. Possible values for featureX
+        - will build the kernel with the supplied features enabled. Possible values for featureX
            are: retpolines, lvi and retretpolines (eg., to compile a kernel with lvi and return
-         >  retpolines enabled supply +lvi+retretpolines as configuration trigger).
+        -  retpolines enabled supply +lvi+retretpolines as configuration trigger).
  - optimization-trigger: only relevant for baseline and +feature.. configuration triggers.
    - nooptimization:
-         > will build the kernel with the configuration specified by the configuration-trigger
+        - will build the kernel with the configuration specified by the configuration-trigger
            but without PIBE's optimization passes.
    - optimizations @workload_folder @budget:
-         > will build the kernel under the configuration specified by the configuration-trigger
+        - will build the kernel under the configuration specified by the configuration-trigger
            using PIBE's indirect call promotion and inlining PGO passes with the given workload
            and the given optimization budget.
-         > @workload_folder is a folder that points to a profiling workload (we already provide
+        - @workload_folder is a folder that points to a profiling workload (we already provide
            lmbench3 and apache2 folders to be used for this parameter).
-         > @budget is a user supplied optimization budget (if you want to profile at an optimization
+        - @budget is a user supplied optimization budget (if you want to profile at an optimization
            budget of 97.1234% for example supply as budget the number 971234). 
 ## Regenerating kernel configurations
 
