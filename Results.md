@@ -79,10 +79,10 @@ $ ./visualise_results.sh -baselines @base -benchmarks @bench1 @bench2 ..
 @base, @bench1, @bench2, .. are relative names to "$PATH_TO_ARTIFACT/playground/performance".
 
 Benchmark results obtained through **run_artifact.sh** have the same name as their corresponding
-kernel configuration name described [here][Experiments.md].
+kernel configuration name described [here](Experiments.md).
 
-You can use this feature if you created your own custom kernel configuration (check tips on [compilation][Compilation.md])
-and benchmarked it via LMBench (as described in our [experiment][Experiments.md] tutorial).
+You can use this feature if you created your own custom kernel configuration (check tips on [compilation](Compilation.md))
+and benchmarked it via LMBench (as described in our [experiment](Experiments.md) tutorial).
 
 
 
