@@ -33,7 +33,8 @@ if [[ "$arg" == "-full" ]]; then
     # Install and configure Apache2
     sudo ./install_apache.sh
 fi
-
+# Install latex to output results in a pdf.
+sudo apt-get install texlive-latex-base
 # Python3 is the base python interpreter used by our .py scripts
 sudo apt-get install python3
 

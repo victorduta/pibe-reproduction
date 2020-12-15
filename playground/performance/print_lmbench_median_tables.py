@@ -44,6 +44,8 @@ benchSelectionSablon =  [ "null", "read" , "write", "open", "stat", "fstat", "af
 
 retpolinesSelectionSablon = [ "null", "read", "write", "open", "stat", "fstat", "select_tcp", "udp" , "tcp", "tcp_conn" , "af_unix" , "pipe"]
 
+tablesablon = []
+
     
 
 def sortResultTable(table):
@@ -95,7 +97,7 @@ def showBenchmarkResults(benches, bases):
             j = j+1
             showBase(bench, base)
             print("")
-            print("Geometric Mean Overhead: " + str(round(computeGeometricMean(bench,base),degree)) + "%")
+            print("Geometric Mean Overhead:" + str(round(computeGeometricMean(bench,base),degree)) + "%")
             print("============eof bench===========")
             print("")
         
@@ -170,9 +172,27 @@ def generateLatexHeaderJustOverhead(size):
          latexString = latexString + "&\\multicolumn{1}{|l|}{PlaceHolder}"
    print(latexString+"\\\\ \\hline")
 
-def outputLatexTableJustOverhead(benches, bases):
+def generateLatexHeaderJustOverhead2(size, sablon):
+   numLs = 1+size
+   latexString = "|"
+   for i in range(0,numLs):
+       if i == 0:
+          latexString = latexString+"l|"
+       else:
+          latexString = latexString+"r|"
+   
+   print("\\begin{tabular}{"+ latexString+ "}")
+   print("\\hline")
+
+   latexString = "\\multicolumn{1}{|l|}{Test}" 
+
+   for i in range(0,size):
+         latexString = latexString + "&\\multicolumn{1}{|l|}{"+ sablon[i]+"}"
+   print(latexString+"\\\\ \\hline")
+
+def outputLatexTableJustOverhead(benches, bases, sablon):
    latexString = ""
-   generateLatexHeaderJustOverhead(len(benches))
+   generateLatexHeaderJustOverhead2(len(benches), sablon)
    for bench in benchSelectionSablon:
        latexString = bench.replace("_","\\_")
        for measurement in benches:
@@ -192,7 +212,7 @@ def outputLatexTableJustOverhead(benches, bases):
 def outpuLatexTableJustBaselines(bases):
    latexString = ""
    instance = 0
-   generateLatexHeaderJustOverhead(len(bases))
+   generateLatexHeaderJustOverhead(len(bases), tablesablon)
    for bench in benchSelectionSablon:
        latexString = bench.replace("_","\\_")
        latexString = latexString+"&"+ str(round(bases[0][bench],degree+1))
@@ -333,8 +353,7 @@ def parseFolder(folder, instance, resultsVector):
 
 
 def main():
-    global baselines, benchmarks, benchSelectionSablon, showResultsOrder
-    print("Middle profile is:"+str(middle))
+    global baselines, benchmarks, benchSelectionSablon, showResultsOrder, tablesablon
     trigger = 0
     if len(sys.argv) != 1:
        baselines = []
@@ -362,10 +381,15 @@ def main():
            if arg == "-benchmarks":
                trigger = 2
                continue
+           if arg == "-sablon":
+               trigger = 3
+               continue
            if trigger == 1:
                baselines.append(arg)
            if trigger == 2:
                benchmarks.append(arg)
+           if trigger == 3:
+               tablesablon.append(arg)
     instance = 0;
     resultsVector = []
     for folder in benchmarks:
@@ -379,23 +403,7 @@ def main():
 
     meanResultsTable = computeMeanInstances(resultsVector)
     meanBaselineTable = computeMeanInstances(baselineVector)
-    
-    #print meanResultsTable
-    print("========================================")
-    #print meanBaselineTable
-    
-
-    showBaselineResults(meanBaselineTable)
-
-    showBenchmarkResults(meanResultsTable, meanBaselineTable)
-    print("")
-    print("")
-    print("-> Latency is measured in microseconds.")
-    print("-> Overhead is expressed as % of the baseline median overhead for the same micro-benchmark.")
-
-    #outputLatexTableContentsNoBases(meanResultsTable, meanBaselineTable)
-    #outputLatexTableJustOverhead(meanResultsTable, meanBaselineTable)
-    #outpuLatexTableJustBaselines(meanBaselineTable)
+    outputLatexTableJustOverhead(meanResultsTable, meanBaselineTable, tablesablon)
     
 
 main()

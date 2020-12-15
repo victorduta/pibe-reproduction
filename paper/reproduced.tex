@@ -1,0 +1,76 @@
+\documentclass{article}
+    % General document formatting
+    \usepackage[margin=0.7in]{geometry}
+    \usepackage[parfill]{parskip}
+    \usepackage[utf8]{inputenc}
+    \usepackage{bashful}
+    \usepackage{adjustbox,booktabs,multirow}
+    % Related to math
+    \usepackage{amsmath,amssymb,amsfonts,amsthm}
+    \usepackage{caption}
+\begin{document}
+
+
+\section*{Tables}
+
+\begin{table}[tb]
+\begin{center}
+\begin{adjustbox}{width=0.5\textwidth}
+\large
+\input{tables/test-eval-lmbench-all}
+\end{adjustbox}
+\end{center}
+\captionof{table}{Overhead with all defenses enabled for our reference measurements on an Intel 8700K. Matches some results from Table 5 .}
+\label{tab:lmbenchresultslviretpolines} 
+\end{table}
+
+\begin{table}[tb]
+\begin{center}
+\begin{adjustbox}{width=0.5\textwidth}
+\large
+\input{tables/test-eval-retpolines}
+\end{adjustbox}
+\end{center}
+\captionof{table}{Overhead for just retpolines enabled for our reference measurements on an Intel 8700K. Matches some results from Table 3 of the main paper.}
+\label{tab:lmbenchresultslviretpolines} 
+\end{table}
+
+\begin{table}[tb]
+\begin{center}
+\input{tables/test-eval-lmbench-geomeans}
+\end{center}
+\captionof{table}{LMBench geometric mean overhead per defense for our reference measurements on an Intel 8700k. Matches some results in Table 6.}
+\label{tab:lmbenchresultsgeomeans} 
+\end{table}
+
+\begin{table}[tb]
+\begin{center}
+\begin{adjustbox}{width=0.5\textwidth}
+\large
+\input{tables/eval-lmbench-all}
+\end{adjustbox}
+\end{center}
+\captionof{table}{Overhead with all defenses enabled on your machine. Matches some results from Table 5 .}
+\label{tab:lmbenchresultslviretpolines} 
+\end{table}
+
+\begin{table}[tb]
+\begin{center}
+\begin{adjustbox}{width=0.5\textwidth}
+\large
+\input{tables/eval-retpolines}
+\end{adjustbox}
+\end{center}
+\captionof{table}{Overhead for just retpolines enabled on your machine. Matches some results from Table 3 of the main paper.}
+\label{tab:lmbenchresultslviretpolines} 
+\end{table}
+
+\begin{table}[tb]
+\begin{center}
+\input{tables/eval-lmbench-geomeans}
+\end{center}
+\captionof{table}{LMBench geometric mean overhead per defense on your machine. Matches Table 6}
+\label{tab:lmbenchresultsgeomeans} 
+\end{table}
+
+\end{document}
