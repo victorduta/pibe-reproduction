@@ -46,7 +46,7 @@ The values acceptable for the triggers are as follows:
    - +feature1..+featureN:
         - will build the kernel with the supplied features enabled. Possible values for featureX
            are: retpolines, lvi and retretpolines (eg., to compile a kernel with lvi and return
-        -  retpolines enabled supply +lvi+retretpolines as configuration trigger).
+           retpolines enabled supply +lvi+retretpolines as configuration trigger).
  - optimization-trigger: only relevant for baseline and +feature.. configuration triggers.
    - nooptimization:
         - will build the kernel with the configuration specified by the configuration-trigger
