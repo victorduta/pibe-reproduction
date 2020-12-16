@@ -59,6 +59,9 @@ The values acceptable for the triggers are as follows:
            lmbench3 and apache2 folders to be used for this parameter).
         - @budget is a user supplied optimization budget (if you want to profile at an optimization
            budget of 97.1234% for example supply as budget the number 971234). 
+
+**NOTES**: For a recommended alternative approach into compiling kernel configurations please refer to the
+last topic in this section.
 ## Regenerating kernel configurations
 
 In order to regenerate one of the kernel images discussed in [Experiments](Experiments.md) you must 
