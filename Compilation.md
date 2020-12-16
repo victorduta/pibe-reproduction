@@ -13,7 +13,7 @@ $ ./install_tools_and_deps.sh -full
 The command should be run from the root directory of our provided artifact 
 (either obtained from github or Zotero).
 
-## Compiling a new kernel
+## Compiling a new kernel (via our shell script)
 
 To compile a new kernel one must make use of the **compile_install_kernel.sh**
 (placed in the root directory of our source tree).
@@ -148,6 +148,37 @@ $ ./compile_install_kernel.sh hard-compile +lvi+retretpolines optimizations apac
 ```
 If the user created his own workload and wants to optimize with it he must specify the
 name in place of "apache2", in the previous command.
+
+### Compiling a new kernel (via our python script)
+When changing from a debug to a release version of the LLVM framework we noticed that the kernel compilation
+may hang indefinetly (happened 2 out of 35 compilations and it does not seem to be related to our compiler
+changes). The fix for the issue is simply restarting the kernel compilation from where it previous hanged
+(via the soft-compile compilation trigger). 
+
+Provided you want to compile your own kernel config we recommend an alternative approach. Use our python
+script as follows (from the root of our provided artifact):
+```sh
+$ python3 compile_install_kernel.py @configuration
+```
+@configuration is a configuration string similar to those discussed in [Experiments](Experiments.md).
+Internally the script will call the same **compile_install_kernel.sh** kernel but will also install a daemon
+that verifies if the compilation hanged. In the unfortunate case in which the compilation hangs (might
+never happen) our provided script will restart the compilation using the soft-compile trigger.
+
+For example, to compile a configuration that enables all defenses, optimized using lmbench as workload at 
+a budget of 99.97% type in:
+
+```sh
+$ python3 compile_install_kernel.py alldefenses.pibe-opt.lmbench-work.999700
+```
+
+To compile a kernel that only enables lvi and optimizes using an apache workload at a budget of 99.98%
+type in:
+
+```sh
+$ python3 compile_install_kernel.py +lvi.pibe-opt.apache-work.999800
+```
+ 
 
 
 

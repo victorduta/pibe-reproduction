@@ -67,10 +67,10 @@ fi
 if [[ "$1" == "hard-compile" ]]; then
     echo "Full kernel compilation."
     echo "${CONFIG_ARR[@]}"
-    (set -x ; ./clean_kernel.sh && cd kernel && make config_backport "${CONFIG_ARR[@]}" && make build_kernel_backport "${BUILD_ARR[@]}" && make build_modules_backport "${MODULE_ARR[@]}" && make install_modules_backport  "${MODULE_ARR[@]}" && make install_image_backport "${MODULE_ARR[@]}" && cd ..)
+    set -x ; ./clean_kernel.sh && cd kernel && make config_backport "${CONFIG_ARR[@]}" && make build_kernel_backport "${BUILD_ARR[@]}" && make build_modules_backport "${MODULE_ARR[@]}" && make install_modules_backport  "${MODULE_ARR[@]}" && make install_image_backport "${MODULE_ARR[@]}" && cd .. 
 fi 
 
 if [[ "$1" == "soft-compile" ]]; then
     echo "Soft kernel compilation (only link-time changes)"
-    (set -x ; ./clean_kernel.sh && cd kernel && rm -f backport/vmlinux && make build_kernel_backport "${BUILD_ARR[@]}" && make build_modules_backport "${MODULE_ARR[@]}" && make install_modules_backport  "${MODULE_ARR[@]}" && make install_image_backport "${MODULE_ARR[@]}" && cd ..)
+    set -x ; ./clean_kernel.sh && cd kernel && rm -f backport/vmlinux && make build_kernel_backport "${BUILD_ARR[@]}" && make build_modules_backport "${MODULE_ARR[@]}" && make install_modules_backport  "${MODULE_ARR[@]}" && make install_image_backport "${MODULE_ARR[@]}" && cd ..
 fi 
