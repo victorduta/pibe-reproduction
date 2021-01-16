@@ -12,7 +12,8 @@ echo "We will do: "$TIMES runs
 cd tools/lmbench3
 
 rm results/x86_64-linux-gnu/*
-
+cat bin/x86_64-linux-gnu/CONFIG.$(hostname) | awk '{if ($1 ~ "ENOUGH" ) {print "ENOUGH=5000";next;};if ($1 ~ "MB=") {print "MB=1024";next;};if ($1 ~ "BENCHMARK_HARDWARE=") {print "BENCHMARK_HARDWARE=NO";next;}}; {print $0}' > bin/x86_64-linux-gnu/temp.conf
+cat bin/x86_64-linux-gnu/temp.conf > bin/x86_64-linux-gnu/CONFIG.$(hostname)
 tries=1
 while [ $tries -le $TIMES ]
 do
