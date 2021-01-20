@@ -21,8 +21,7 @@ export DEFAULT_KERNEL_SOURCE_TREE_PREFIX=$WD/kernel
 export USED_KERNEL_SOURCE=backport
 export EXTRACT_VMLINUX=${DEFAULT_KERNEL_SOURCE_TREE_PREFIX}/${USED_KERNEL_SOURCE}/scripts/extract-vmlinux
 export BENCHMARK_DIR=performance
-export RUNS=5
-
+[ -z "$RUNS" ] && export RUNS=5
 
 # The following environment variables are used by make_rootfs.sh to make a rootfs for qemu execution
 export ROOTFS_DIR=${QEMU_DIR}/rootfs
