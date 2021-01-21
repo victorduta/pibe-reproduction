@@ -18,7 +18,7 @@
 \subsection{With all defenses enabled: Table~\ref{testall} and Table~\ref{tab:all}}
 Table~\ref{testall} and Table~\ref{tab:all} show the LMBench overhead when all transient execution defenses are enabled
 in the kernel (with/without optimizations). Table~\ref{testall} overheads are taken from the main paper while Table~\ref{tab:all}
-overheads are obtained on your machine. The results refer primarily to Table 5 of the main paper.
+overheads are obtained on your machine. The results refer primarily to \textbf{Table 5 of the main paper}.
 Column \textbf{'nooptimization'} (column 2), from Table~\ref{testall}~\ref{tab:all} traces back to Table 5, column 2 of the main paper (the \textbf{'regular LTO'} column). 
 Column \textbf{'99.9999(\%) LMBench work.'} (column 3) traces back to Table 5, column 6 of the main paper (the \textbf{'99.9999\%'} column). 
 The last column (not included directly in the main paper) refers to the overheads of a kernel image (enforced with all transient execution defenses) 
@@ -51,8 +51,8 @@ is discussed in \textbf{Section 8.4. Performance Robustness to Workload Profiles
 
 Table~\ref{tab:testretpolines} and Table~\ref{tab:retpolines} show LMBench overheads when only the \emph{retpolines} defense is
 enabled in the kernel (with/without optimizations). Table~\ref{tab:testretpolines} overheads are taken from the main paper while
-Table~\ref{tab:retpolines} overheads are obtained on your machine. The numbers refer to some results presented in Table 3 of the main
-paper. Column \textbf{'nooptimization'} (column 2), traces back to Table 3, column 2 of the main paper (the \textbf{'regular LTO'} column).
+Table~\ref{tab:retpolines} overheads are obtained on your machine. The numbers refer to some results presented in \textbf{Table 3 of the main
+paper}. Column \textbf{'nooptimization'} (column 2), traces back to Table 3, column 2 of the main paper (the \textbf{'regular LTO'} column).
 Column \textbf{'+icp (99.999\%)'} (column 3), traces back to Table 3, column 5 of the main paper (same column name in the main paper).
 
 \begin{table}[H]
@@ -86,7 +86,7 @@ Table~\ref{tab:lmbenchtestresultsgeomeans} overheads are taken from the main pap
 are obtained on your machine. 
 The \textbf{'LTO'} column depicts unoptimized images while the \textbf{'PIBE'}
 column shows results for images that also apply optimizations.
-The numbers refer to results presented in Table 6 of the main paper.
+The numbers refer to results presented in \textbf{Table 6 of the main paper}.
 Note that, for Table~\ref{tab:lmbenchtestresultsgeomeans}, the overhead in the last line, 3rd column (all defenses + optimizations) differs from the overhead reported
  in Table 6 of the main paper (as in Table 6 of the main paper we present the geometric 
 overhead of a kernel configuration that applies optimizations but also disables some heuristics, as described in 

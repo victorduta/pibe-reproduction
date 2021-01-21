@@ -1,5 +1,27 @@
 This file provides tips for visualising the results and mapping results back to the 
 relevant tables from the main paper.
+## Generating the results in pdf format
+To assemble all results obtained while running the artifact into a pdf run the following
+command from the root of the artifact:
+```sh
+$ ./generate_tables.sh
+```
+The script is essentially a wrapper over *visualise_results.sh* and will show in parallel
+the results obtained on you machine vs the results in the main paper to which these results
+match back to.
+
+The resulting pdf is split in three subsections:
+- First subsection shows LMBench overheads with/without optimizations for images that apply all 
+  transient defenses (refers mostly to Table 5 from the main paper).
+- Second subsection shows LMBench overheads for images that only apply retpolines (with/without
+  optimizations (refers mostly to Table 3 from the main paper).
+- Third subsection shows geometric overheads for each defense and the combination of all defenses (
+  refers mostly to Table 6 from the main paper).
+
+Each subsection contains an explanatory paragraph to describe how each column in the generated 
+table can be matched back to the main results in the paper.
+
+
 
 ## What happens when calling visualise_results.sh.
 
