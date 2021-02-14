@@ -372,10 +372,10 @@ lto_incremental_modpost_link()
             if [ "${PIBE_OPTIMIZATIONS}" == "Promote" ]; then
                  ${OPT} -disable-inlining -load=${PASS_PATH}/linearpromotion.so  -icp_linear --profile-summary-cutoff-hot=${PIBE_BUDGET}  -icp-samplepgo-linear --icp-max-prom=40  --icp-remaining-percent-threshold=0 --icp-total-percent-threshold=0  -pass-remarks=PGOIndirectCallPromotion   -pass-remarks-missed=PGOIndirectCallPromotion   -pass-remarks-output=dummy.kernel  sample_profile.bc -o inlined_kernel.bc > icp_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
             elif [ "${PIBE_OPTIMIZATIONS}" == "Inline"  ]; then
-                 ${OPT} -disable-inlining  -load=${PASS_PATH}/inliner.so -adce --globaldce --profile-summary-cutoff-hot=${PIBE_BUDGET} -hotness_inliner -o inlined_kernel.bc sample_profile.bc > inlining_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
+                 ${OPT} -disable-inlining  -load=${PASS_PATH}/inliner.so  --profile-summary-cutoff-hot=${PIBE_BUDGET} -hotness_inliner -adce --globaldce -o inlined_kernel.bc sample_profile.bc > inlining_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
             elif [ "${PIBE_OPTIMIZATIONS}" == "PromoteAndInline"  ]; then
                  ${OPT} -disable-inlining -load=${PASS_PATH}/linearpromotion.so  -icp_linear --profile-summary-cutoff-hot=${PIBE_BUDGET}  -icp-samplepgo-linear --icp-max-prom=40  --icp-remaining-percent-threshold=0 --icp-total-percent-threshold=0  -pass-remarks=PGOIndirectCallPromotion   -pass-remarks-missed=PGOIndirectCallPromotion   -pass-remarks-output=icp_remarks_${PIBE_BUDGET}.kernel  sample_profile.bc -o sample_profile_icp.bc > icp_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
-                 ${OPT} -disable-inlining  -load=${PASS_PATH}/inliner.so -adce --globaldce  --profile-summary-cutoff-hot=${PIBE_BUDGET} -hotness_inliner -o inlined_kernel.bc sample_profile_icp.bc > inlining_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
+                 ${OPT} -disable-inlining  -load=${PASS_PATH}/inliner.so  --profile-summary-cutoff-hot=${PIBE_BUDGET} -hotness_inliner -adce --globaldce -o inlined_kernel.bc sample_profile_icp.bc > inlining_stats_${DEFENSE_CONFIGURATION}_${PIBE_BUDGET}
             else
                  cp sample_profile.bc inlined_kernel.bc 
             fi
