@@ -1,9 +1,3 @@
-Apache PIBE-reproduction
-Copyright [2019-2021] The Apache Software Foundation
-
-This product includes software developed at
-The Apache Software Foundation (http://www.apache.org/).
-
 ##  Some tips to navigate the repo
 
  - **kernel/backport**: Linux Kernel 5.1.0 modified with support for LLVM LTO, and integrated with our optimization passes.
